@@ -26,12 +26,12 @@ if (loginForm) {
         }
 
         if (
-            username.value === "jayakumar" &&
-            password.value === "00-00-0000"
+            username.value === "jpglks" &&
+            password.value === "10-11-2002"
         ) {
 
             alert("Login Successful");
-            window.location.href = "index.html";
+            window.location.href = "login.html";
 
         } else {
 

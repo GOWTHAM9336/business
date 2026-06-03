@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Family Portal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p.subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .countdown-box {
+            background-color: #edf2f7;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        #timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e53e3e;
+        }
+
+        /* The Surprise Button */
+        .family-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background-color: #a0aec0; /* Locked color */
+            border: none;
+            border-radius: 10px;
+            cursor: not-allowed;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Active/Unlocked Button Style */
+        .family-btn.unlocked {
+            background-color: #38a169; /* Beautiful Green */
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(56, 161, 105, 0.4);
+        }
+
+        .family-btn.unlocked:hover {
+            background-color: #2f855a;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome Family! ❤️</h1>
+        <p class="subtitle">A special surprise is waiting for you.</p>
+
+        <div class="countdown-box">
+            <div class="countdown-label">Unlocks tomorrow at 6:00 PM</div>
+            <div id="timer">Calculating time...</div>
+        </div>
+
+        <!-- REPLACE THE URL BELOW WITH YOUR OWN LINK -->
+        <a id="secret-button" href="https://your-family-link-here.com" target="_blank" class="family-btn">
+            🔒 Locked Until 6 PM
+        </a>
+    </div>
+
+    <script>
+        // --- CONFIGURATION: SET UP TOMORROW AT 6:00 PM ---
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1); // Move to tomorrow
+        tomorrow.setHours(18, 0, 0, 0);           // Set to exactly 18:00 (6:00 PM)
+        
+        const targetTime = tomorrow.getTime();
+        const secretButton = document.getElementById('secret-button');
+        const timerDisplay = document.getElementById('timer');
+
+        // Prevent clicking while locked
+        secretButton.addEventListener('click', function(e) {
+            if (!secretButton.classList.contains('unlocked')) {
+                e.preventDefault(); // Stops the link from opening
+                alert("Patience, family! The button isn't ready yet. 😊");
+            }
+        });
+
+        // Update countdown every 1 second
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetTime - now;
+
+            // Time calculations
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Display the result
+            timerDisplay.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If countdown is finished
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                timerDisplay.innerHTML = "🎉 IT'S TIME! 🎉";
+                timerDisplay.style.color = "#38a169";
+                
+                // Unlock the button
+                secretButton.classList.add('unlocked');
+                secretButton.innerHTML = "✨ Open Surprise Link ✨";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
