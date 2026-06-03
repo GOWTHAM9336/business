@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.45),
+    rgba(0,0,0,.45)),
+    url('natural.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* Main Card */
+
+.container{
+    width:100%;
+    max-width:450px;
+
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.35);
+
+    animation:fadeIn 1s ease;
+}
+
+/* Logo Section */
+
+.logo-box{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo-box img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+
+    border:5px solid #ffffff;
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,.6);
+
+    transition:.4s;
+}
+
+.logo-box img:hover{
+    transform:scale(1.08) rotate(3deg);
+}
+
+.logo-box h1{
+    color:#fff;
+    font-size:30px;
+    font-weight:800;
+    margin-top:15px;
+}
+
+.logo-box p{
+    color:#d8ffd8;
+    font-size:15px;
+}
+
+/* Form */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+h2{
+    text-align:center;
+    color:white;
+    margin-bottom:10px;
+}
+
+/* Inputs */
+
+input{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.25);
+
+    color:white;
+    font-size:15px;
+
+    transition:.3s;
+}
+
+input::placeholder{
+    color:#eeeeee;
+}
+
+input:focus{
+    background:rgba(255,255,255,.35);
+    transform:scale(1.02);
+}
+
+/* Login Button */
+
+.submit-btn{
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #00c853,
+    #0b9b3d
+    );
+
+    color:white;
+
+    font-size:18px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+    0 10px 20px rgba(0,200,83,.4);
+}
+
+/* Footer Text */
+
+.footer-text{
+    text-align:center;
+    color:white;
+    margin-top:15px;
+    font-size:13px;
+}
+
+/* Animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .container{
+        padding:25px;
+    }
+
+    .logo-box img{
+        width:110px;
+        height:110px;
+    }
+
+    .logo-box h1{
+        font-size:22px;
+    }
+
+    .logo-box p{
+        font-size:13px;
+    }
+
+    input{
+        padding:13px;
+    }
+
+    .submit-btn{
+        padding:13px;
+        font-size:16px;
+    }
+}
+
