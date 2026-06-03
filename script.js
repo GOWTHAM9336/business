@@ -26,8 +26,8 @@ if (loginForm) {
         }
 
         if (
-            username.value === "aa" &&
-            password.value === "aa"
+            username.value.toLowerCase() === "jpglks" &&
+            password.value === "10-11-2002"
         ) {
 
             alert("Login Successful");
