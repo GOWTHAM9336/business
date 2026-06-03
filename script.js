@@ -26,8 +26,8 @@ if (loginForm) {
         }
 
         if (
-            username.value === "jpglks" &&
-            password.value === "10-11-2002"
+            username.value === "aa" &&
+            password.value === "aa"
         ) {
 
             alert("Login Successful");
@@ -60,7 +60,7 @@ function logout(){
 
     if(confirmLogout){
 
-        window.location.href = "login.html";
+        window.location.href = "index.html";
 
     }
 }
